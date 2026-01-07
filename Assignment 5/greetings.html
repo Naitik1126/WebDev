@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting</title>
+</head>
+<body>
+
+<h3 id="msg"></h3>
+
+<script>
+    var h = new Date().getHours();
+
+    if (h < 12)
+        document.getElementById("msg").innerHTML = "Good Morning";
+    else if (h < 16)
+        document.getElementById("msg").innerHTML = "Good Afternoon";
+    else
+        document.getElementById("msg").innerHTML = "Good Evening";
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form onsubmit="return check()">
+    Name: <input id="n"><br><br>
+    Email: <input id="e"><br><br>
+    Password: <input type="password" id="p"><br><br>
+    Phone: <input id="ph"><br><br>
+    DOB: <input type="date" id="d"><br><br>
+    <input type="submit">
+</form>
+
+<script>
+function check() {
+    if (!n.value.match(/^[A-Za-z]{3,}$/)) return alert("Invalid Name"), false;
+    if (!e.value.match(/.+@.+\..+/)) return alert("Invalid Email"), false;
+    if (!p.value.match(/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).{8,}/))
+        return alert("Weak Password"), false;
+    if (!ph.value.match(/^\d{10}$/)) return alert("Invalid Phone"), false;
+    if (d.value=="") return alert("Select DOB"), false;
+    alert("Submitted");
+    return true;
+}
+</script>
+
+</body>
+</html>

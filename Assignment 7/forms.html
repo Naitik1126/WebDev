@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+
+<style>
+.error {
+    color: red;
+    font-size: 24px;
+}
+</style>
+
+<script>
+function validate()
+{
+    var valid = true;
+
+    var n = document.getElementById("name").value;
+    var e = document.getElementById("email").value;
+    var p = document.getElementById("pass").value;
+    var c = document.getElementById("cpass").value;
+    var m = document.getElementById("mobile").value;
+
+    var male = document.getElementById("male").checked;
+    var female = document.getElementById("female").checked;
+    var terms = document.getElementById("terms").checked;
+
+    document.getElementById("nErr").innerHTML = "";
+    document.getElementById("eErr").innerHTML = "";
+    document.getElementById("pErr").innerHTML = "";
+    document.getElementById("cErr").innerHTML = "";
+    document.getElementById("mErr").innerHTML = "";
+    document.getElementById("gErr").innerHTML = "";
+    document.getElementById("tErr").innerHTML = "";
+
+    if(n.trim() == "")
+    {
+        document.getElementById("nErr").innerHTML = "Enter name";
+        valid = false;
+    }
+
+    if(!e.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/))
+    {
+        document.getElementById("eErr").innerHTML = "Invalid email";
+        valid = false;
+    }
+
+    if(p.length < 8)
+    {
+        document.getElementById("pErr").innerHTML = "Min 8 characters";
+        valid = false;
+    }
+
+    if(p != c)
+    {
+        document.getElementById("cErr").innerHTML = "Passwords do not match";
+        valid = false;
+    }
+
+    if(!m.match(/^[0-9]{10}$/))
+    {
+        document.getElementById("mErr").innerHTML = "Invalid mobile";
+        valid = false;
+    }
+
+    if(!male && !female && !trans)
+    {
+        document.getElementById("gErr").innerHTML = "Select gender";
+        valid = false;
+    }
+
+    if(!terms)
+    {
+        document.getElementById("tErr").innerHTML = "Accept terms & conditions";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form onsubmit="return validate()">
+
+Name:<br>
+<input type="text" id="name"><br>
+<span id="nErr" class="error"></span><br>
+
+Email:<br>
+<input type="text" id="email"><br>
+<span id="eErr" class="error"></span><br>
+
+Password:<br>
+<input type="password" id="pass"><br>
+<span id="pErr" class="error"></span><br>
+
+Confirm Password:<br>
+<input type="password" id="cpass"><br>
+<span id="cErr" class="error"></span><br>
+
+Mobile:<br>
+<input type="text" id="mobile"><br>
+<span id="mErr" class="error"></span><br>
+
+Gender:<br>
+<input type="radio" id="male" name="g"> Male
+<input type="radio" id="female" name="g"> Female<br>
+<input type="radio" id="trans" name="g"> Transgender<br>
+<span id="gErr" class="error"></span><br>
+
+<input type="checkbox" id="terms"> Accept Terms & Conditions<br>
+<span id="tErr" class="error"></span><br><br>
+
+<input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
